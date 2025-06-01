@@ -3,11 +3,7 @@
 from sqlalchemy import Column, Integer, String, Float
 from database_conn import Base
 from sqlalchemy.orm import Mapped,mapped_column,sessionmaker
-''' | Module           | Description                                                                                                                                                                                                              |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `sqlalchemy`     | The **core SQLAlchemy module**. It includes low-level SQL building blocks like `Column`, `Integer`, `String`, `create_engine`, etc.                                                                                      |
-| `sqlalchemy.orm` | The **ORM (Object-Relational Mapping) module**. It provides high-level tools like `DeclarativeBase`, `mapped_column`, `Mapped`, `Session`, etc., used for defining models and interacting with DBs using Python classes. |
-'''
+
 
 class Movie(Base):
     __tablename__="Movies"
