@@ -1,0 +1,30 @@
+services:
+  moviesdb:
+    image: mysql:8.3.0
+    container_name: moviesdb
+    environment:
+      MYSQL_ROOT_PASSWORD: Praneeth
+      MYSQL_DATABASE: moviesdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  movies:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: "mysql+pymysql://root:Praneeth@moviesdb:3306/moviesdb"
+    ports:
+      - "8001:8000"
+    depends_on:
+      - moviesdb
+    entrypoint: ["./wait-for-it.sh", "moviesdb:3306", "--", "uvicorn", "main:app"]
+
+
+volumes:
+  db_data:
+
+
+
