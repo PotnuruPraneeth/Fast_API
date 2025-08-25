@@ -9,9 +9,9 @@ mcp = FastMCP("movies-api-mcp")
 # Base URL for your FastAPI app
 BASE_URL = os.getenv("MOVIE_API_URL", "http://localhost:8000/v1")
 
-# ---------------------------
-# Tools wrapping your routers
-# ---------------------------
+
+# Tools wrappes your routers
+
 
 @mcp.tool()
 def list_movies() -> List[Dict[str, Any]]:
@@ -55,9 +55,9 @@ def create_movie(
     resp.raise_for_status()
     return resp.json()
 
-# ---------------------------
+
 # Run stdio MCP server
-# ---------------------------
+
 if __name__ == "__main__":
     mcp.run() 
 
