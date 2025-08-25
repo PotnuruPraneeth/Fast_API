@@ -1,0 +1,18 @@
+#.env is used to store environment variables (like API keys, passwords, database URLs).
+'''| Part            | Meaning                                                                                                        |
+| --------------- | -------------------------------------------------------------------------------------------------------------- |
+| `mysql+pymysql` | Tells SQLAlchemy: Use MySQL database with the `pymysql` Python driver                                          |
+| `username`      | The MySQL database username                                                                                    |
+| `password`      | The password for that user                                                                                     |
+| `host`          | The server address where MySQL is running (e.g., `localhost`, `127.0.0.1`, or a Docker service name like `db`) |
+| `port`          | The port MySQL is listening on (default is `3306`)                                                             |
+| `moviesdb`      | The **name of the database** you want to connect to                                                            |
+'''
+#why 
+#To keep sensitive information (like passwords, API keys) out of your code.
+#✅ To make your code more portable across development, testing, and production environments.
+DATABASE_URL=mysql+pymysql://root:Praneeth@localhost:3306/moviesdb
+
+'''Host: 127.0.0.1 (which is localhost)
+Port: 3306
+User: root'''

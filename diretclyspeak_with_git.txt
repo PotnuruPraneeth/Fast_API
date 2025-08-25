@@ -1,0 +1,39 @@
+$ curl -X 'POST' \
+  'http://127.0.0.1:8000/v1/movies' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "title": " Away",
+  "description": "A boy.",                                                        "language": "china",
+  "duration": 125.0,
+  "rating": 4.0
+}'
+
+#this a post man which speak directly with sql data base 
+#this command we have to write in the git bash
+How does this work together?
+You run MySQL inside Docker:
+
+bash
+1.docker run --name my-mysql -e MYSQL_ROOT_PASSWORD=rootpassword -e MYSQL_DATABASE=moviesdb -p 3306:3306 -d mysql:latest
+Your backend API is configured to connect to this database, e.g.:
+
+
+2.DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=rootpassword
+DB_NAME=moviesdb
+
+3.When you run your curl command, the backend:
+Receives the JSON movie data.
+Connects to MySQL inside the Docker container.
+Inserts the movie data into a movies table.
+Returns a response (like confirmation or the created movie).
+
+| Step                      | What happens                                     |
+| ------------------------- | ------------------------------------------------ |
+| curl POST request         | Sends movie data to your API server              |
+| API server                | Processes the request                            |
+| API backend database call | Inserts data into SQL database (MySQL in Docker) |
+| MySQL Docker container    | Stores the data securely in the database         |
